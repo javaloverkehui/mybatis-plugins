@@ -79,13 +79,4 @@ public class AdditionJavaFilePlugin extends PluginAdapter {
         }
         return additionJavaFiles;
     }
-
-    public static void main(String[] args) {
-        try {
-            Class clazz = Class.forName("com.kenny.mbg.dao.write.MBGMvcTestRedMapper");
-            System.out.println(clazz);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }
