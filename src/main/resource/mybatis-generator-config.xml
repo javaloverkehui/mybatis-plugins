@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="ReadDB2Tables" targetRuntime="MyBatis3">
+        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionJavaFilePlugin">
+            <property name="search" value="^MBG"/>
+            <property name="replace" value=""/>
+            <property name="targetPackage" value="com.kenny.mvc.custom.dao.read"/>
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionXmlFilePlugin">
+            <property name="search" value="^MBG"/>
+            <property name="replace" value=""/>
+            <property name="targetPackage" value="mybatis/mappers/mvc/custom/read" />
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.ExamplesPlugin">
+            <property name="parentExample" value="com.kenny.mvc.common.model.BaseExample" />
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.PagingPlugin" />
+        <plugin type="com.kenny.mvc.mybatis.plugins.ReTypePlugin" >
+            <property name="fromFields" value="" />
+            <property name="toFields" value="" />
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFilePlugin">
+            <property name="priffix" value="MBG"/>
+            <property name="suffix" value=""/>
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFileByPatternPlugin">
+            <property name="search" value="Mapper" />
+            <property name="replace" value="ReadMapper" />
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8"
+                        driverClass="com.mysql.jdbc.Driver"
+                        password="root"
+                        userId="root">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.kenny.mvc.mbg.po" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/read" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mvc.mbg.dao.read" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="mvc_test" domainObjectName="MvcTest" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableCountByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="school" domainObjectName="School" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableCountByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+
+    <context id="WriteDB2Tables" targetRuntime="MyBatis3">
+        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionJavaFilePlugin">
+            <property name="search" value="^MBG"/>
+            <property name="replace" value=""/>
+            <property name="targetPackage" value="com.kenny.mvc.custom.dao.write"/>
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionXmlFilePlugin">
+            <property name="search" value="^MBG"/>
+            <property name="replace" value=""/>
+            <property name="targetPackage" value="mybatis/mappers/mvc/custom/write" />
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.ExamplesPlugin">
+            <property name="parentExample" value="com.kenny.mvc.common.model.BaseExample" />
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.PagingPlugin" />
+        <plugin type="com.kenny.mvc.mybatis.plugins.ReTypePlugin" >
+            <property name="fromFields" value="" />
+            <property name="toFields" value="" />
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFilePlugin">
+            <property name="priffix" value="MBG"/>
+            <property name="suffix" value=""/>
+        </plugin>
+        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFileByPatternPlugin">
+            <property name="search" value="Mapper" />
+            <property name="replace" value="ReadMapper" />
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8"
+                        driverClass="com.mysql.jdbc.Driver"
+                        password="root"
+                        userId="root">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.kenny.mvc.mbg.po" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/write" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mvc.mbg.dao.write" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="mvc_test" domainObjectName="MvcTest" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableCountByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="school" domainObjectName="School" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableCountByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
