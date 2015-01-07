@@ -47,6 +47,12 @@ public class AdditionJavaFilePlugin extends PluginAdapter {
 
             CompilationUnit originalCompilationUnit = generatedJavaFile.getCompilationUnit();
             String javaFileName = generatedJavaFile.getFileName().replaceAll(search, replace).replaceAll("\\..*", "");
+
+            try {
+                Class.forName(targetPackage + "." + javaFileName);
+                continue;
+            } catch (ClassNotFoundException e) {
+            }
             String fullJavaFileName = targetPackage + "." + javaFileName;
             Interface additionalJavaFileCompilationUnit = new Interface(fullJavaFileName);
             additionalJavaFileCompilationUnit.addSuperInterface(originalCompilationUnit.getType());
@@ -68,4 +74,12 @@ public class AdditionJavaFilePlugin extends PluginAdapter {
         return additionJavaFiles;
     }
 
+    public static void main(String[] args) {
+        try {
+            Class clazz = Class.forName("com.kenny.mbg.dao.write.MBGMvcTestRedMapper");
+            System.out.println(clazz);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

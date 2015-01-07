@@ -19,10 +19,14 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
     private static final String SEARCH_STR_KEY = "search";
     private static final String REPLACE_STR_KEY = "replace";
     private static final String TARGET_PACKEGE_KEY = "targetPackage";
+    private static final String NAME_SPACE_SEARCH_KEY = "nameSpaceSearch";
+    private static final String NAME_SPACE_REPLACE_KEY = "nameSpaceReplace";
 
     private String targetPackage;
     private String search;
     private String replace;
+    private String nameSpackeReplace;
+    private String nameSpackeSearch;
 
     public AdditionXmlFilePlugin() {
         super();
@@ -34,6 +38,8 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
         search = this.properties.getProperty(SEARCH_STR_KEY);
         replace = this.properties.getProperty(REPLACE_STR_KEY);
         targetPackage = this.properties.getProperty(TARGET_PACKEGE_KEY);
+        nameSpackeSearch = this.properties.getProperty(NAME_SPACE_SEARCH_KEY);
+        nameSpackeReplace = this.properties.getProperty(NAME_SPACE_REPLACE_KEY);
         return true;
     }
 
@@ -44,16 +50,23 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
             return super.contextGenerateAdditionalXmlFiles(introspectedTable);
         List<GeneratedXmlFile> additionXmlFiles = new ArrayList<>();
         for (GeneratedXmlFile generatedXmlFile : generatedXmlFiles) {
+            String newFileName = generatedXmlFile.getFileName().replaceAll(search, replace);
+            if (null != getClass().getResource("/" + targetPackage + "/" + newFileName))
+                continue;
             Document document = new Document(
                     XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID,
                     XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
 
             XmlElement root = new XmlElement("mapper");
-            root.addAttribute(new Attribute("namespace", introspectedTable.getMyBatis3SqlMapNamespace()));
+            System.out.println(introspectedTable.getMyBatis3SqlMapNamespace());
+            root.addAttribute(new Attribute("namespace",
+                    introspectedTable.getMyBatis3SqlMapNamespace()
+                            .replaceAll(search, replace)
+                            .replaceAll(nameSpackeSearch, nameSpackeReplace)));
             document.setRootElement(root);
             GeneratedXmlFile gxf = new GeneratedXmlFile(
                     document,
-                    generatedXmlFile.getFileName().replaceAll(search, replace),
+                    newFileName,
                     targetPackage,
                     generatedXmlFile.getTargetProject(),
                     false, context.getXmlFormatter());

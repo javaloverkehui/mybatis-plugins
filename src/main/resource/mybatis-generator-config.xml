@@ -4,29 +4,31 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="ReadDB2Tables" targetRuntime="MyBatis3">
-        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionJavaFilePlugin">
-            <property name="search" value="^MBG"/>
+        <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
+            <property name="search" value="MBG"/>
             <property name="replace" value=""/>
-            <property name="targetPackage" value="com.kenny.mvc.custom.dao.read"/>
+            <property name="targetPackage" value="com.kenny.custom.dao.read"/>
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionXmlFilePlugin">
-            <property name="search" value="^MBG"/>
+        <plugin type="com.kenny.mybatis.plugins.AdditionXmlFilePlugin">
+            <property name="search" value="MBG"/>
             <property name="replace" value=""/>
+            <property name="nameSpaceSearch" value="mbg"/>
+            <property name="nameSpaceReplace" value="custom"/>
             <property name="targetPackage" value="mybatis/mappers/mvc/custom/read" />
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.ExamplesPlugin">
-            <property name="parentExample" value="com.kenny.mvc.common.model.BaseExample" />
+        <plugin type="com.kenny.mybatis.plugins.ExamplesPlugin">
+            <property name="parentExample" value="com.kenny.common.model.BaseExample" />
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.PagingPlugin" />
-        <plugin type="com.kenny.mvc.mybatis.plugins.ReTypePlugin" >
+        <plugin type="com.kenny.mybatis.plugins.PagingPlugin" />
+        <plugin type="com.kenny.mybatis.plugins.ReTypePlugin" >
             <property name="fromFields" value="" />
             <property name="toFields" value="" />
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFilePlugin">
+        <plugin type="com.kenny.mybatis.plugins.RenameFilePlugin">
             <property name="priffix" value="MBG"/>
             <property name="suffix" value=""/>
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFileByPatternPlugin">
+        <plugin type="com.kenny.mybatis.plugins.RenameFileByPatternPlugin">
             <property name="search" value="Mapper" />
             <property name="replace" value="ReadMapper" />
         </plugin>
@@ -42,14 +44,14 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.kenny.mvc.mbg.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.kenny.mbg.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/read" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/read" targetProject="src/main/resource">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mvc.mbg.dao.read" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mbg.dao.read" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -66,29 +68,31 @@
     </context>
 
     <context id="WriteDB2Tables" targetRuntime="MyBatis3">
-        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionJavaFilePlugin">
-            <property name="search" value="^MBG"/>
+        <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
+            <property name="search" value="MBG"/>
             <property name="replace" value=""/>
-            <property name="targetPackage" value="com.kenny.mvc.custom.dao.write"/>
+            <property name="targetPackage" value="com.kenny.custom.dao.write"/>
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.AdditionXmlFilePlugin">
-            <property name="search" value="^MBG"/>
+        <plugin type="com.kenny.mybatis.plugins.AdditionXmlFilePlugin">
+            <property name="search" value="MBG"/>
             <property name="replace" value=""/>
+            <property name="nameSpaceSearch" value="mbg"/>
+            <property name="nameSpaceReplace" value="custom"/>
             <property name="targetPackage" value="mybatis/mappers/mvc/custom/write" />
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.ExamplesPlugin">
-            <property name="parentExample" value="com.kenny.mvc.common.model.BaseExample" />
+        <plugin type="com.kenny.mybatis.plugins.ExamplesPlugin">
+            <property name="parentExample" value="com.kenny.common.model.BaseExample" />
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.PagingPlugin" />
-        <plugin type="com.kenny.mvc.mybatis.plugins.ReTypePlugin" >
+        <plugin type="com.kenny.mybatis.plugins.PagingPlugin" />
+        <plugin type="com.kenny.mybatis.plugins.ReTypePlugin" >
             <property name="fromFields" value="" />
             <property name="toFields" value="" />
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFilePlugin">
+        <plugin type="com.kenny.mybatis.plugins.RenameFilePlugin">
             <property name="priffix" value="MBG"/>
             <property name="suffix" value=""/>
         </plugin>
-        <plugin type="com.kenny.mvc.mybatis.plugins.RenameFileByPatternPlugin">
+        <plugin type="com.kenny.mybatis.plugins.RenameFileByPatternPlugin">
             <property name="search" value="Mapper" />
             <property name="replace" value="ReadMapper" />
         </plugin>
@@ -104,14 +108,14 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.kenny.mvc.mbg.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.kenny.mbg.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/write" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/write" targetProject="src/main/resource">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mvc.mbg.dao.write" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mbg.dao.write" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
