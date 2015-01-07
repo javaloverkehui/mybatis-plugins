@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by kehui on 2015/1/6.
+ * 给xml中添加分页代码
  */
 public class PagingPlugin extends PluginAdapter {
 
@@ -28,6 +29,11 @@ public class PagingPlugin extends PluginAdapter {
         return super.sqlMapSelectByExampleWithBLOBsElementGenerated(element, introspectedTable);
     }
 
+    /**
+     * 分页代码
+     * @param element
+     * @param introspectedTable
+     */
     public void addLimit(XmlElement element, IntrospectedTable introspectedTable) {
         element.addElement(new TextElement("<if test=\"limit!=null\">"));
         element.addElement(new TextElement("limit"));

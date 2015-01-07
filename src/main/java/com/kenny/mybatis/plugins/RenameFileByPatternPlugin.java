@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by kehui on 2015/1/6.
+ * 根据regex来替换文件名称
  */
 public class RenameFileByPatternPlugin extends PluginAdapter {
     private static final String SEARCH_STR_KEY = "search";
@@ -33,11 +34,13 @@ public class RenameFileByPatternPlugin extends PluginAdapter {
 
     @Override
     public void initialized(IntrospectedTable introspectedTable) {
+        //替换java文件名称
         String oldType = introspectedTable.getMyBatis3JavaMapperType();
         Matcher matcher = pattern.matcher(oldType);
         oldType = matcher.replaceAll(replaceString);
         introspectedTable.setMyBatis3JavaMapperType(oldType);
 
+        //替换xml文件名称
         String xml = introspectedTable.getMyBatis3XmlMapperFileName();
         Matcher xmlMatcher = pattern.matcher(xml);
         xml = xmlMatcher.replaceAll(replaceString);

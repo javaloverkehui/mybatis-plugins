@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Created by kehui on 2015/1/6.
+ * 添加额外的xml文件
+ * 文件为空, 项目中需要手写的一些sql实现,放在这些文件里面, 不要改MBG开头的文件
  */
 public class AdditionXmlFilePlugin extends PluginAdapter {
     private static final String SEARCH_STR_KEY = "search";
@@ -35,11 +37,11 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
 
     @Override
     public boolean validate(List<String> warnings) {
-        search = this.properties.getProperty(SEARCH_STR_KEY);
-        replace = this.properties.getProperty(REPLACE_STR_KEY);
-        targetPackage = this.properties.getProperty(TARGET_PACKEGE_KEY);
-        nameSpackeSearch = this.properties.getProperty(NAME_SPACE_SEARCH_KEY);
-        nameSpackeReplace = this.properties.getProperty(NAME_SPACE_REPLACE_KEY);
+        search = this.properties.getProperty(SEARCH_STR_KEY);//查找名字内容
+        replace = this.properties.getProperty(REPLACE_STR_KEY);//替换后的名字内容
+        targetPackage = this.properties.getProperty(TARGET_PACKEGE_KEY);//目录, 以resource下面一级开始
+        nameSpackeSearch = this.properties.getProperty(NAME_SPACE_SEARCH_KEY);//查找xml中的命名空间的内容
+        nameSpackeReplace = this.properties.getProperty(NAME_SPACE_REPLACE_KEY);//替换xml命名空间后的内容
         return true;
     }
 
@@ -50,20 +52,25 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
             return super.contextGenerateAdditionalXmlFiles(introspectedTable);
         List<GeneratedXmlFile> additionXmlFiles = new ArrayList<>();
         for (GeneratedXmlFile generatedXmlFile : generatedXmlFiles) {
+            //新的文件名称
             String newFileName = generatedXmlFile.getFileName().replaceAll(search, replace);
+            //如果该文件已生成则无需生成, 否则生成
             if (null != getClass().getResource("/" + targetPackage + "/" + newFileName))
                 continue;
+            //xml头信息
             Document document = new Document(
                     XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID,
                     XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
 
+            //顶级节点
             XmlElement root = new XmlElement("mapper");
-            System.out.println(introspectedTable.getMyBatis3SqlMapNamespace());
+            //命名空间
             root.addAttribute(new Attribute("namespace",
                     introspectedTable.getMyBatis3SqlMapNamespace()
                             .replaceAll(search, replace)
                             .replaceAll(nameSpackeSearch, nameSpackeReplace)));
             document.setRootElement(root);
+            //初始化一个xml文件
             GeneratedXmlFile gxf = new GeneratedXmlFile(
                     document,
                     newFileName,
