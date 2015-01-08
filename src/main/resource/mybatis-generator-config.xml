@@ -68,6 +68,7 @@
     </context>
 
     <context id="WriteDB2Tables" targetRuntime="MyBatis3">
+        <plugin type="com.kenny.mybatis.plugins.SqlMapReturnIdPlugin" />
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
             <property name="search" value="MBG"/>
             <property name="replace" value=""/>
