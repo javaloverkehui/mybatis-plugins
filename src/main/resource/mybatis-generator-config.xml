@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+    <properties resource="config/jdbc.properties" />
     <context id="ReadDB2Tables" targetRuntime="MyBatis3">
         <plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
@@ -36,10 +37,10 @@
         <commentGenerator>
             <property name="suppressAllComments" value="false"/>
         </commentGenerator>
-        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8"
-                        driverClass="com.mysql.jdbc.Driver"
-                        password="root"
-                        userId="root">
+        <jdbcConnection connectionURL="${r.jdbc.url}"
+                        driverClass="${r.jdbc.driverClassName}"
+                        password="${r.jdbc.username}"
+                        userId="${r.jdbc.password}">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -102,10 +103,10 @@
         <commentGenerator>
             <property name="suppressAllComments" value="false"/>
         </commentGenerator>
-        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf-8"
-                        driverClass="com.mysql.jdbc.Driver"
-                        password="root"
-                        userId="root">
+        <jdbcConnection connectionURL="${r.jdbc.url}"
+                        driverClass="${r.jdbc.driverClassName}"
+                        password="${r.jdbc.username}"
+                        userId="${r.jdbc.password}">
         </jdbcConnection>
 
         <javaTypeResolver>
