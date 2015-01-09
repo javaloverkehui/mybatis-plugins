@@ -39,12 +39,6 @@ public class ReTypePlugin extends PluginAdapter {
      */
     @Override
     public boolean modelFieldGenerated(Field field, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
-        //添加数据库注释
-        if (null != introspectedColumn.getRemarks() && !"".equals(introspectedColumn.getRemarks())) {
-            String remark = " * " + introspectedColumn.getRemarks();
-            field.getJavaDocLines().add(3, remark);
-        }
-
         if (fromFields.contains(field.getType().getFullyQualifiedName())) {
             String[] ffields = fromFields.split(",");
             String[] tfields = toFields.split(",");

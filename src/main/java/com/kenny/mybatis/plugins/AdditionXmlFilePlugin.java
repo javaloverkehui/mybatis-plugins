@@ -27,8 +27,8 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
     private String targetPackage;
     private String search;
     private String replace;
-    private String nameSpackeReplace;
-    private String nameSpackeSearch;
+    private String nameSpaceReplace;
+    private String nameSpaceSearch;
 
     public AdditionXmlFilePlugin() {
         super();
@@ -40,8 +40,8 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
         search = this.properties.getProperty(SEARCH_STR_KEY);//查找名字内容
         replace = this.properties.getProperty(REPLACE_STR_KEY);//替换后的名字内容
         targetPackage = this.properties.getProperty(TARGET_PACKEGE_KEY);//目录, 以resource下面一级开始
-        nameSpackeSearch = this.properties.getProperty(NAME_SPACE_SEARCH_KEY);//查找xml中的命名空间的内容
-        nameSpackeReplace = this.properties.getProperty(NAME_SPACE_REPLACE_KEY);//替换xml命名空间后的内容
+        nameSpaceSearch = this.properties.getProperty(NAME_SPACE_SEARCH_KEY);//查找xml中的命名空间的内容
+        nameSpaceReplace = this.properties.getProperty(NAME_SPACE_REPLACE_KEY);//替换xml命名空间后的内容
         return true;
     }
 
@@ -68,7 +68,7 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
             root.addAttribute(new Attribute("namespace",
                     introspectedTable.getMyBatis3SqlMapNamespace()
                             .replaceAll(search, replace)
-                            .replaceAll(nameSpackeSearch, nameSpackeReplace)));
+                            .replaceAll(nameSpaceSearch, nameSpaceReplace)));
             document.setRootElement(root);
             //初始化一个xml文件
             GeneratedXmlFile gxf = new GeneratedXmlFile(

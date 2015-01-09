@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="ReadDB2Tables" targetRuntime="MyBatis3">
+        <plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
             <property name="search" value="MBG"/>
             <property name="replace" value=""/>
@@ -68,6 +69,7 @@
     </context>
 
     <context id="WriteDB2Tables" targetRuntime="MyBatis3">
+        <plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />
         <plugin type="com.kenny.mybatis.plugins.SqlMapReturnIdPlugin" />
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
             <property name="search" value="MBG"/>
