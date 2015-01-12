@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <properties resource="config/jdbc.properties" />
     <context id="ReadDB2Tables" targetRuntime="MyBatis3">
-        <plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />
+        <!--<plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />-->
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
             <property name="search" value="MBG"/>
             <property name="replace" value=""/>
@@ -34,7 +34,7 @@
             <property name="search" value="Mapper" />
             <property name="replace" value="ReadMapper" />
         </plugin>
-        <commentGenerator>
+        <commentGenerator type="com.kenny.mybatis.api.MyCommentGenerator">
             <property name="suppressAllComments" value="false"/>
         </commentGenerator>
         <jdbcConnection connectionURL="${r.jdbc.url}"
@@ -70,7 +70,7 @@
     </context>
 
     <context id="WriteDB2Tables" targetRuntime="MyBatis3">
-        <plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />
+        <!--<plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />-->
         <plugin type="com.kenny.mybatis.plugins.SqlMapReturnIdPlugin" />
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
             <property name="search" value="MBG"/>
@@ -100,7 +100,7 @@
             <property name="search" value="Mapper" />
             <property name="replace" value="ReadMapper" />
         </plugin>
-        <commentGenerator>
+        <commentGenerator type="com.kenny.mybatis.api.MyCommentGenerator">
             <property name="suppressAllComments" value="false"/>
         </commentGenerator>
         <jdbcConnection connectionURL="${r.jdbc.url}"

@@ -6,6 +6,7 @@ import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.XmlConstants;
 
@@ -61,7 +62,6 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
             Document document = new Document(
                     XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID,
                     XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
-
             //顶级节点
             XmlElement root = new XmlElement("mapper");
             //命名空间
@@ -69,6 +69,16 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
                     introspectedTable.getMyBatis3SqlMapNamespace()
                             .replaceAll(search, replace)
                             .replaceAll(nameSpaceSearch, nameSpaceReplace)));
+            root.addElement(new TextElement("<!--")); //$NON-NLS-1$
+
+            /*注释*/
+            StringBuilder sb = new StringBuilder();
+            sb.append(" mbg mapper's namespace = "); //$NON-NLS-1$
+            sb.append(introspectedTable.getMyBatis3SqlMapNamespace());
+            root.addElement(new TextElement(sb.toString()));
+            root.addElement(new TextElement("引用MBG里的元素,可以使用namespace.element的方式来调用."));
+            root.addElement(new TextElement("-->")); //$NON-NLS-1$
+            /*注释结束*/
             document.setRootElement(root);
             //初始化一个xml文件
             GeneratedXmlFile gxf = new GeneratedXmlFile(
