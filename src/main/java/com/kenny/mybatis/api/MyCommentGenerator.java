@@ -51,13 +51,13 @@ public class MyCommentGenerator extends DefaultCommentGenerator implements Comme
             return;
         }
 
-        xmlElement.addElement(new TextElement("<!--")); //$NON-NLS-1$
+//        xmlElement.addElement(new TextElement("<!--")); //$NON-NLS-1$
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("  WARNING - "); //$NON-NLS-1$
-        sb.append(MergeConstants.NEW_ELEMENT_TAG);
-        xmlElement.addElement(new TextElement(sb.toString()));
-        xmlElement.addElement(new TextElement("-->")); //$NON-NLS-1$
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("  WARNING - "); //$NON-NLS-1$
+//        sb.append(MergeConstants.NEW_ELEMENT_TAG);
+//        xmlElement.addElement(new TextElement(sb.toString()));
+//        xmlElement.addElement(new TextElement("-->")); //$NON-NLS-1$
     }
 
     public void addRootComment(XmlElement rootElement) {
@@ -108,14 +108,14 @@ public class MyCommentGenerator extends DefaultCommentGenerator implements Comme
 
     protected void addOnlyTag(JavaElement javaElement,
                                  boolean markAsDoNotDelete) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("/* "); //$NON-NLS-1$
-        sb.append(MergeConstants.NEW_ELEMENT_TAG);
-        if (markAsDoNotDelete) {
-            sb.append(" 请勿修改"); //$NON-NLS-1$
-        }
-        sb.append(" */");
-        javaElement.addJavaDocLine(sb.toString());
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("/* "); //$NON-NLS-1$
+//        sb.append(MergeConstants.NEW_ELEMENT_TAG);
+//        if (markAsDoNotDelete) {
+//            sb.append(" 请勿修改"); //$NON-NLS-1$
+//        }
+//        sb.append(" */");
+//        javaElement.addJavaDocLine(sb.toString());
     }
 
     /**
@@ -171,7 +171,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator implements Comme
         sb.append(introspectedColumn.getActualColumnName());
         field.addJavaDocLine(sb.toString());
 
-        field.addJavaDocLine(" * 字段描述：" + introspectedColumn.getRemarks());
+        field.addJavaDocLine(" * " + introspectedColumn.getRemarks());
         field.addJavaDocLine(" * " + introspectedColumn.getJdbcTypeName() + "(" + introspectedColumn.getLength() + ")");
         addJavadocTag(field, false);
         field.addJavaDocLine(" */"); //$NON-NLS-1$
