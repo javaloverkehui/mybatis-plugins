@@ -10,6 +10,7 @@ import org.mybatis.generator.config.MergeConstants;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 
+import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -37,7 +38,6 @@ public class MyCommentGenerator extends DefaultCommentGenerator implements Comme
         }
         compilationUnit.addFileCommentLine("/**");
         compilationUnit.addFileCommentLine(" * " + MergeConstants.NEW_ELEMENT_TAG);
-        compilationUnit.addFileCommentLine(" * @author kehui");
 //        compilationUnit.addFileCommentLine(" * " + getDateString());
         compilationUnit.addFileCommentLine(" */");
     }
@@ -70,7 +70,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator implements Comme
         StringBuilder sb = new StringBuilder();
         sb.append("  WARNING - "); //$NON-NLS-1$
         sb.append(MergeConstants.NEW_ELEMENT_TAG);
-        sb.append(" 以下是由mybatis-generator自动生成,请勿修改! ");
+        sb.append(" AutoGenerate file, don't update any code! ");
         rootElement.addElement(new TextElement(sb.toString()));
         rootElement.addElement(new TextElement("-->")); //$NON-NLS-1$
     }
@@ -100,9 +100,6 @@ public class MyCommentGenerator extends DefaultCommentGenerator implements Comme
         StringBuilder sb = new StringBuilder();
         sb.append(" * "); //$NON-NLS-1$
         sb.append(MergeConstants.NEW_ELEMENT_TAG);
-        if (markAsDoNotDelete) {
-            sb.append(" 请勿修改"); //$NON-NLS-1$
-        }
         javaElement.addJavaDocLine(sb.toString());
     }
 

@@ -9,129 +9,61 @@
         <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
             <property name="search" value="MBG"/>
             <property name="replace" value=""/>
-            <property name="targetPackage" value="com.kenny.custom.dao.read"/>
+            <property name="targetPackage" value="com.kenny.dao.custom"/>
         </plugin>
         <plugin type="com.kenny.mybatis.plugins.AdditionXmlFilePlugin">
             <property name="search" value="MBG"/>
             <property name="replace" value=""/>
             <property name="nameSpaceSearch" value="mbg"/>
             <property name="nameSpaceReplace" value="custom"/>
-            <property name="targetPackage" value="mybatis/mappers/mvc/custom/read" />
+            <property name="targetPackage" value="mybatis/mapper/custom" />
         </plugin>
         <plugin type="com.kenny.mybatis.plugins.ExamplesPlugin">
             <property name="parentExample" value="com.kenny.common.model.BaseExample" />
         </plugin>
         <plugin type="com.kenny.mybatis.plugins.PagingPlugin" />
         <plugin type="com.kenny.mybatis.plugins.ReTypePlugin" >
-            <property name="fromFields" value="" />
-            <property name="toFields" value="" />
+            <property name="fromFields" value="java.lang.Byte,java.lang.Short" />
+            <property name="toFields" value="java.lang.Integer,java.lang.Integer" />
         </plugin>
         <plugin type="com.kenny.mybatis.plugins.RenameFilePlugin">
             <property name="priffix" value="MBG"/>
             <property name="suffix" value=""/>
         </plugin>
-        <plugin type="com.kenny.mybatis.plugins.RenameFileByPatternPlugin">
-            <property name="search" value="Mapper" />
-            <property name="replace" value="ReadMapper" />
-        </plugin>
+        <!--<plugin type="com.kenny.mybatis.plugins.RenameFileByPatternPlugin">-->
+            <!--<property name="search" value="Mapper" />-->
+            <!--<property name="replace" value="ReadMapper" />-->
+        <!--</plugin>-->
         <commentGenerator type="com.kenny.mybatis.api.MyCommentGenerator">
             <property name="suppressAllComments" value="false"/>
         </commentGenerator>
         <jdbcConnection connectionURL="${r.jdbc.url}"
                         driverClass="${r.jdbc.driverClassName}"
-                        password="${r.jdbc.username}"
-                        userId="${r.jdbc.password}">
+                        password="${r.jdbc.password}"
+                        userId="${r.jdbc.username}">
         </jdbcConnection>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.kenny.mbg.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.kenny.mode.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/read" targetProject="src/main/resource">
+        <sqlMapGenerator targetPackage="mybatis/mapper/mbg" targetProject="src/main/resource">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mbg.dao.read" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.dao.mbg" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="mvc_test" domainObjectName="MvcTest" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableCountByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="school" domainObjectName="School" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableCountByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <property name="useActualColumnNames" value="true"/>
+        <table tableName="order"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableInsert="true"
+               enableCountByExample="true">
         </table>
     </context>
 
-    <context id="WriteDB2Tables" targetRuntime="MyBatis3">
-        <!--<plugin type="com.kenny.mybatis.plugins.CommentsPlugin" />-->
-        <plugin type="com.kenny.mybatis.plugins.SqlMapReturnIdPlugin" />
-        <plugin type="com.kenny.mybatis.plugins.AdditionJavaFilePlugin">
-            <property name="search" value="MBG"/>
-            <property name="replace" value=""/>
-            <property name="targetPackage" value="com.kenny.custom.dao.write"/>
-        </plugin>
-        <plugin type="com.kenny.mybatis.plugins.AdditionXmlFilePlugin">
-            <property name="search" value="MBG"/>
-            <property name="replace" value=""/>
-            <property name="nameSpaceSearch" value="mbg"/>
-            <property name="nameSpaceReplace" value="custom"/>
-            <property name="targetPackage" value="mybatis/mappers/mvc/custom/write" />
-        </plugin>
-        <plugin type="com.kenny.mybatis.plugins.ExamplesPlugin">
-            <property name="parentExample" value="com.kenny.common.model.BaseExample" />
-        </plugin>
-        <plugin type="com.kenny.mybatis.plugins.PagingPlugin" />
-        <plugin type="com.kenny.mybatis.plugins.ReTypePlugin" >
-            <property name="fromFields" value="" />
-            <property name="toFields" value="" />
-        </plugin>
-        <plugin type="com.kenny.mybatis.plugins.RenameFilePlugin">
-            <property name="priffix" value="MBG"/>
-            <property name="suffix" value=""/>
-        </plugin>
-        <plugin type="com.kenny.mybatis.plugins.RenameFileByPatternPlugin">
-            <property name="search" value="Mapper" />
-            <property name="replace" value="ReadMapper" />
-        </plugin>
-        <commentGenerator type="com.kenny.mybatis.api.MyCommentGenerator">
-            <property name="suppressAllComments" value="false"/>
-        </commentGenerator>
-        <jdbcConnection connectionURL="${r.jdbc.url}"
-                        driverClass="${r.jdbc.driverClassName}"
-                        password="${r.jdbc.username}"
-                        userId="${r.jdbc.password}">
-        </jdbcConnection>
-
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.kenny.mbg.po" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true"/>
-            <property name="trimStrings" value="true"/>
-        </javaModelGenerator>
-        <sqlMapGenerator targetPackage="mybatis/mappers/mvc/mbg/write" targetProject="src/main/resource">
-            <property name="enableSubPackages" value="true"/>
-        </sqlMapGenerator>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kenny.mbg.dao.write" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true"/>
-        </javaClientGenerator>
-
-        <table tableName="mvc_test" domainObjectName="MvcTest" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableCountByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="school" domainObjectName="School" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableCountByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-    </context>
 </generatorConfiguration>

@@ -49,8 +49,10 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
     @Override
     public List<GeneratedXmlFile> contextGenerateAdditionalXmlFiles(IntrospectedTable introspectedTable) {
         List<GeneratedXmlFile> generatedXmlFiles = introspectedTable.getGeneratedXmlFiles();
-        if (CollectionUtils.isEmpty(generatedXmlFiles))
+        if (CollectionUtils.isEmpty(generatedXmlFiles)) {
+
             return super.contextGenerateAdditionalXmlFiles(introspectedTable);
+        }
         List<GeneratedXmlFile> additionXmlFiles = new ArrayList<>();
         for (GeneratedXmlFile generatedXmlFile : generatedXmlFiles) {
             //新的文件名称
@@ -76,7 +78,6 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
             sb.append(" mbg mapper's namespace = "); //$NON-NLS-1$
             sb.append(introspectedTable.getMyBatis3SqlMapNamespace());
             root.addElement(new TextElement(sb.toString()));
-            root.addElement(new TextElement("引用MBG里的元素,可以使用namespace.element的方式来调用."));
             root.addElement(new TextElement("-->")); //$NON-NLS-1$
             /*注释结束*/
             document.setRootElement(root);
@@ -92,5 +93,7 @@ public class AdditionXmlFilePlugin extends PluginAdapter {
 
         return additionXmlFiles;
     }
+
+
 
 }

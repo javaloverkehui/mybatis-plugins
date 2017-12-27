@@ -108,7 +108,6 @@ public class CommentsPlugin extends PluginAdapter {
      */
     public List<String> initSetterMethodDocLines(Method method, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         List<String> javaDocLines = new ArrayList<>();
-        javaDocLines.add("/* @mbggenerated */");
         return javaDocLines;
     }
 
@@ -123,7 +122,6 @@ public class CommentsPlugin extends PluginAdapter {
      */
     public List<String> initGetterMethodDocLines(Method method, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         List<String> javaDocLines = new ArrayList<>();
-        javaDocLines.add("/* @mbggenerated */");
         return javaDocLines;
     }
 
@@ -135,7 +133,6 @@ public class CommentsPlugin extends PluginAdapter {
      */
     public List<String> initJavaMapperDocLines(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         List<String> javaDocLines = new ArrayList<>();
-        javaDocLines.add("/* @mbggenerated */");
         return javaDocLines;
     }
 
@@ -147,7 +144,6 @@ public class CommentsPlugin extends PluginAdapter {
      */
     public List<String> initExampleDocLines(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         List<String> javaDocLines = new ArrayList<>();
-        javaDocLines.add("/* @mbggenerated */");
         return javaDocLines;
     }
 
@@ -163,8 +159,7 @@ public class CommentsPlugin extends PluginAdapter {
     public List<String> initSqlMapperDocLines(Field field, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         List<String> xmlDocLines = new ArrayList<>();
         xmlDocLines.add("<!--");
-        xmlDocLines.add("  WARNING - @mbggenerated");
-        xmlDocLines.add("  该元素由mybatis-generator自动生成, 请勿修改");
+        xmlDocLines.add("  WARNING - AutoGenerate file, don't update any code!");
         xmlDocLines.add("-->");
         return xmlDocLines;
     }
