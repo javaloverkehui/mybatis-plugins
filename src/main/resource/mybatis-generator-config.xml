@@ -34,9 +34,7 @@
             <!--<property name="search" value="Mapper" />-->
             <!--<property name="replace" value="ReadMapper" />-->
         <!--</plugin>-->
-        <commentGenerator type="com.kenny.mybatis.api.MyCommentGenerator">
-            <property name="suppressAllComments" value="false"/>
-        </commentGenerator>
+        <commentGenerator type="com.kenny.mybatis.api.CustomComment" />
         <jdbcConnection connectionURL="${r.jdbc.url}"
                         driverClass="${r.jdbc.driverClassName}"
                         password="${r.jdbc.password}"
@@ -46,7 +44,7 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.kenny.mode.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.kenny.model.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
