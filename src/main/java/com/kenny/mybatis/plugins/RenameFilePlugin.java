@@ -42,6 +42,7 @@ public class RenameFilePlugin extends PluginAdapter {
         String oldXml = introspectedTable.getMyBatis3XmlMapperFileName();
         String newXml = priffix + oldXml.replace("\\.", suffix + ".");
         introspectedTable.setMyBatis3XmlMapperFileName(newXml);
+
         super.initialized(introspectedTable);
     }
 
